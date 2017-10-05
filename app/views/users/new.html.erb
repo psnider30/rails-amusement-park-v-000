@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<% if @message %>
+    <p><%= @message %></p>
+<% end %>
+
+<h1>Sign Up</h1>
+
+<%= render partial: 'form', locals: {user: @user} %>

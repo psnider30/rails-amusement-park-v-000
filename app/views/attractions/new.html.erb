@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<% if @message %>
+    <p><%= @message %></p>
+<% end %>
+
+<h1>Make New Attraction</h1>
+
+<%= render partial: 'form', locals: {attraction: @attraction} %>

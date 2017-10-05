@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<% if @message %>
+    <p><%= @message %></p>
+<% end %>
+
+<%= content_tag(:h1, @attraction.name) %>
+
+<div class="center">
+  <div class="pic">
+    <img src="http://<%= @attraction.name.gsub(" ", "") %>.jpg.to/" height="250">
+  </div>
+
+  <div class="info">
+    <% if current_user.admin %>
+      <p><strong>ADMIN</strong></p>
+    <% end %>
+    <p><strong>Name:</strong> <%= @attraction.name %></p>
+    <p><strong>Tickets:</strong> <%= @attraction.tickets %></p>
+    <p><strong>Mood:</strong>  <%= @attraction.happiness_rating %></p>
+    <p><strong>Mood:</strong>  <%= @attraction.nausea_rating %></p>
+    <p><strong>Height:</strong> <%= @attraction.min_height %> inches</p>
+
+    <div>
+    <%= form_for @ride do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :attraction_id, value: @attraction.id %>
+      <%= f.submit "Go on this ride" %>
+    <% end %>
+  </div>
+    <p><%= link_to 'Edit Attraction', edit_attraction_path(@attraction) if current_user.admin %></p><br>
+
+  </div>
+</div>
